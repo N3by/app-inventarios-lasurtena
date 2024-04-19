@@ -13,11 +13,10 @@ export function MenuHambur() {
           <HamburgerMenu onClick={() => setClick(!click)}>
             <label
               className={click ? "toggle active" : "toggle"}
-              for="checkbox"
             >
-              <div class="bars" id="bar1"></div>
-              <div class="bars" id="bar2"></div>
-              <div class="bars" id="bar3"></div>
+              <div className="bars" id="bar1"></div>
+              <div className="bars" id="bar2"></div>
+              <div className="bars" id="bar3"></div>
             </label>
           </HamburgerMenu>
         </section>
@@ -68,7 +67,6 @@ const NavBar = styled.nav`
 
 const HamburgerMenu = styled.span`
   position: fixed;
-  left: 20px;
   top: 2rem;
   z-index: 100;
 
@@ -126,7 +124,7 @@ const HamburgerMenu = styled.span`
   }
 
   #bar1,
-  #bar3 {
+  #bar3 { 
     width: 70%;
   }
 `;
@@ -163,7 +161,7 @@ const Menu = styled.div`
       color: ${(props) => props.theme.text};
       height: 80px;
 
-      Linkicon {
+      .Linkicon {
         padding: ${v.smSpacing} ${v.mdSpacing};
         display: flex;
         svg {
