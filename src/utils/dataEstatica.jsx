@@ -109,7 +109,7 @@ export const DataModulosConfiguracion =[
 export const TipouserData = [
   {
     descripcion: "empleado",
-    icono: "🪖",
+    icono: "👑",
   },
   {
     descripcion: "administrador",
@@ -119,11 +119,11 @@ export const TipouserData = [
 //tipodoc
 export const TipoDocData = [
   {
-    descripcion: "Dni",
-    icono: "🪖",
+    descripcion: "CC",
+    icono: "👑",
   },
   {
-    descripcion: "Libreta electoral",
+    descripcion: "Pasaporte",
     icono: "👑",
   },
   {

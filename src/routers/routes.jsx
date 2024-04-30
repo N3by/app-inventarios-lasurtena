@@ -11,27 +11,41 @@ import {
   useUsuariosStore,
   Marca,
   Categorias,
-  Productos
+  Productos,
+  Usuarios,
 } from "../index";
 import { useQuery } from "@tanstack/react-query";
 
 export function MyRoutes() {
   const { user } = UserAuth();
-  const { mostrarUsuarios,idusuario } = useUsuariosStore();
-  const {mostrarEmpresa} = useEmpresaStore();
-  const { data:datausuarios, isLoading, error } = useQuery({
+  const { mostrarUsuarios, idusuario, mostrarpermisos} = useUsuariosStore();
+  const { mostrarEmpresa } = useEmpresaStore();
+  const {
+    data: datausuarios,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["mostrar usuarios"],
     queryFn: mostrarUsuarios,
   });
 
+  const { data: dataempresa } = useQuery({
+    queryKey: ["Mostrar empresa"],
+    queryFn: () => mostrarEmpresa({ idusuario: idusuario }),
+    enabled: !!datausuarios,
+  });
 
-  const{data:dataempresa} = useQuery({queryKey:["Mostrar empresa"], queryFn:()=> mostrarEmpresa({idusuario:idusuario}),enabled:!!datausuarios})
-  
-  if (isLoading){
-    return <SpinnerLoader/>
+  const { data: datapermisos } = useQuery({
+    queryKey: ["Mostrar permisos", {id_usuario: idusuario}],
+    queryFn: () => mostrarpermisos({ id_usuario: idusuario }),
+    enabled: !!datausuarios,
+  });
+
+  if (isLoading) {
+    return <SpinnerLoader />;
   }
-  if(error){
-    return <ErrorMolecula mensaje={error.message}/>
+  if (error) {
+    return <ErrorMolecula mensaje={error.message} />;
   }
   return (
     <Routes>
@@ -42,7 +56,7 @@ export function MyRoutes() {
         <Route path="/configurar/marca" element={<Marca />} />
         <Route path="/configurar/categorias" element={<Categorias />} />
         <Route path="/configurar/productos" element={<Productos />} />
-
+        <Route path="/configurar/usuarios" element={<Usuarios />} />
       </Route>
     </Routes>
   );
