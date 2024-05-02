@@ -1,6 +1,7 @@
 import {
   BloqueoPagina,
   MarcaTemplate,
+  ReportesTemplate,
   SpinnerLoader,
   useEmpresaStore,
   useMarcaStore,
@@ -43,5 +44,5 @@ export function Reportes() {
     return <span>Error...</span>;
   }
 
-  return <MarcaTemplate data={datamarca} />;
+  return <ReportesTemplate data={datamarca} />;
 }
