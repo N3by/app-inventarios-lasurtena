@@ -11,15 +11,18 @@ import {
   Buscador,
   useMarcaStore,
   ReporteKardex,
+  useKardexStore,
 } from "../../index";
 import { useState } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
 
-export function ReportesTemplate({ data }) {
+export function ReportesTemplate({  }) {
   const [state, setState] = useState(false);
   const [dataSelect, setdataSelect] = useState([]);
   const [accion, setAccion] = useState("");
   const [openRegistro, SetopenRegistro] = useState(false);
+  const {datakardex} = useKardexStore();
+
   const nuevoRegistro = () => {
     SetopenRegistro(!openRegistro);
     setAccion("Nuevo");
@@ -60,7 +63,7 @@ export function ReportesTemplate({ data }) {
 
       <section className="main">
         <PDFViewer style={{width:"100%", height: "100%"}}>
-          <ReporteKardex />
+          <ReporteKardex data={datakardex}/>
         </PDFViewer>
       </section>
     </Container>
