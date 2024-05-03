@@ -5,15 +5,15 @@ import { Device } from "../../styles/breackpoints";
 import { TablaKardex } from "../../index";
 
 export function Tabs({data}) {
-  const [activeTab, setactiveTab] = useState(0);
+  const [activetab, setactivetab] = useState(0);
   const handleClick = (index) => {
-    setactiveTab(index);
+    setactivetab(index);
   };
   return (
-    <Container className="container" activeTab={`${activeTab}00%`}>
+    <Container className="container" activetab={`${activetab}00%`}>
       <ul className="tabs">
         <li
-          className={activeTab == 0 ? "active" : ""}
+          className={activetab == 0 ? "active" : ""}
           onClick={() => handleClick(0)}
         >
           {<v.iconopie />}
@@ -23,7 +23,7 @@ export function Tabs({data}) {
       </ul>
 
       <div className="tab-content">
-        {activeTab === 0 && <TablaKardex data={data}/>}
+        {activetab === 0 && <TablaKardex data={data}/>}
 
       </div>
     </Container>
@@ -77,11 +77,11 @@ const Container = styled.div`
       z-index: 1;
       border-radius: 15px;
       transition: 0.25s ease-out;
-      transform: translateY(${(props) => props.activeTab});
+      transform: translateY(${(props) => props.activetab});
       box-shadow: 0px 10px 20px -3px #ff5722;
       top: 0;
       @media ${Device.tablet}{
-        transform: translateX(${(props) => props.activeTab});
+        transform: translateX(${(props) => props.activetab});
         height: 4px;
         width: 180px;
         bottom:0 ;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 export function BloqueoPagina({ state }) {
   return (
     <Container className={state ? "" : "visible"}>
-      <span className="icono">⚠</span>
+      <span className="icono">💀</span>
       <span className="texto">
         No tienes permisos para acceder a este modulo
       </span>

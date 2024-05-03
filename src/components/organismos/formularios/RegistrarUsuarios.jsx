@@ -149,7 +149,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                   <input
                     className="form__field"
                     defaultValue={dataSelect.pass}
-                    type="text"
+                    type="password"
                     placeholder=""
                     {...register("pass", {
                       required: true,

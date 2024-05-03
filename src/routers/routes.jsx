@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import {
   Configuracion,
   ErrorMolecula,
@@ -20,7 +20,7 @@ import { Reportes } from "../pages/Reportes";
 
 export function MyRoutes() {
   const { user } = UserAuth();
-  const { mostrarUsuarios, idusuario, mostrarpermisos} = useUsuariosStore();
+  const { mostrarUsuarios, idusuario, mostrarpermisos } = useUsuariosStore();
   const { mostrarEmpresa } = useEmpresaStore();
   const {
     data: datausuarios,
@@ -38,7 +38,7 @@ export function MyRoutes() {
   });
 
   const { data: datapermisos } = useQuery({
-    queryKey: ["Mostrar permisos", {id_usuario: idusuario}],
+    queryKey: ["Mostrar permisos", { id_usuario: idusuario }],
     queryFn: () => mostrarpermisos({ id_usuario: idusuario }),
     enabled: !!datausuarios,
   });
@@ -46,9 +46,17 @@ export function MyRoutes() {
   if (isLoading) {
     return <SpinnerLoader />;
   }
-  if (error) {
-    return <ErrorMolecula mensaje={error.message} />;
+  const isAuthenticated = !!user;
+
+  // Redirigir a login si el usuario no está autenticado
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
   }
+
+  if (error) {
+    <ErrorMolecula mensaje={error.message} />;
+  }
+
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -61,8 +69,6 @@ export function MyRoutes() {
         <Route path="/configurar/usuarios" element={<Usuarios />} />
         <Route path="/kardex" element={<Kardex />} />
         <Route path="/reportes" element={<Reportes />} />
-
-        
       </Route>
     </Routes>
   );

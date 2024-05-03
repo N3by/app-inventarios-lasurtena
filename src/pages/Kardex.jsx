@@ -15,7 +15,7 @@ export function Kardex() {
   const {buscarproductos, buscador:buscadorproductos } = useProductosStore();
   const { datapermisos } = useUsuariosStore();
   const statePermiso = datapermisos.some((objeto) =>
-    objeto.modulos.nombre.includes("Marca de productos")
+    objeto.modulos.nombre.includes("Kardex")
   );
   
   const { datakardex, mostrarkardex, buscarkardex, buscador   } = useKardexStore();
