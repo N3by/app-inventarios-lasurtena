@@ -42,7 +42,14 @@ export function TablaMarca({
       });
       return;
     }
-
+    if (p.tipouser === "empleado") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Lo sentimos, solo los administradores pueden eliminar marcas",
+      });
+      return;
+    }
     Swal.fire({
       title: "¿Estás seguro(a)(e)?",
       text: "Una vez eliminado, ¡no podrá recuperar este registro!",

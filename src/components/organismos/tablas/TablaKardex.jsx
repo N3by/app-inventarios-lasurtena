@@ -121,19 +121,19 @@ export function TablaKardex({
         <span>{info.getValue()}</span>
         </td>
     },
-    {
-      accessorKey: "acciones",
-      header: "Acciones",
-      enableSorting:false,
-      cell: (info) => (
-        <td className="ContentCell">
-          <ContentAccionesTabla
-            funcionEditar={() => editar(info.row.original)}
-            funcionEliminar={() => eliminar(info.row.original)}
-          />
-        </td>
-      ),
-    },
+    // {
+    //   accessorKey: "acciones",
+    //   header: "Acciones",
+    //   enableSorting:false,
+    //   cell: (info) => (
+    //     <td className="ContentCell">
+    //       <ContentAccionesTabla
+    //         funcionEditar={() => editar(info.row.original)}
+    //         funcionEliminar={() => eliminar(info.row.original)}
+    //       />
+    //     </td>
+    //   ),
+    // },
   ];
   const table = useReactTable({
     data,

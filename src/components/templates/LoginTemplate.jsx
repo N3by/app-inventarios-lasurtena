@@ -11,7 +11,7 @@ import { Device } from "../../styles/breackpoints";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import carrito from "../../assets/carrito.svg";
+import carrito from "../../assets/carrito.png";
 import logo from "../../assets/inventarioslogo.png";
 import { MdOutlineInfo } from "react-icons/md";
 import { ThemeContext } from "../../App";
@@ -68,31 +68,31 @@ export function LoginTemplate() {
               <input
                 className="form__field"
                 type="text"
-                placeholder="email"
+                placeholder=""
                 {...register("correo", {
                   required: true,
                 })}
               />
-              <label className="form__label">email</label>
+              <label className="form__label">Correo</label>
               {errors.correo?.type === "required" && <p>Campo requerido</p>}
             </InputText>
             <InputText icono={<v.iconopass />}>
               <input
                 className="form__field"
                 type="password"
-                placeholder="contraseña"
+                placeholder=""
                 {...register("pass", {
                   required: true,
                 })}
               />
-              <label className="form__label">pass</label>
+              <label className="form__label">Contraseña</label>
               {errors.pass?.type === "required" && <p>Campo requerido</p>}
             </InputText>
             <ContainerBtn>
               <Btnsave titulo="Iniciar" bgcolor="#fc6b32" />
               <Btnsave
                 funcion={() => setState(!state)}
-                titulo="Crear cuenta"
+                titulo="Crear Nueva Empresa"
                 bgcolor="#ffffff"
               />
             </ContainerBtn>

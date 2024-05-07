@@ -67,9 +67,9 @@ export function TablaProductos({
   const columns = [
     {
       accessorKey: "descripcion",
-      header: "Descripcion",
+      header: "Producto",
       cell: (info) => (
-        <td data-title="Descripcion" className="ContentCell">
+        <td data-title="Producto" className="ContentCell">
           <span>{info.getValue()}</span>
         </td>
       ),
@@ -78,7 +78,7 @@ export function TablaProductos({
     {
       accessorKey: "stock",
       header: "Stock",
-      enableSorting: false,
+      enableSorting: true,
       cell: (info) => (
         <td data-title="Stock" className="ContentCell">
           <span>{info.getValue()}</span>

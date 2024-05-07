@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BtnCircular, UserAuth, v,ListaMenuDesplegable,DesplegableUser, useAuthStore } from "../../index";
+import { NavLink, Navigate } from "react-router-dom";
 export function Header({ stateConfig }) {
   const {signOut} = useAuthStore()
   const { user } = UserAuth();
@@ -7,6 +8,10 @@ export function Header({ stateConfig }) {
     if (p.tipo === "cerrarsesion") {
      
       await signOut();
+    }
+    else if(p.tipo === "miperfil"){
+
+      <Navigate to={"/configurar/perfil"}/>
     }
   };
   return (

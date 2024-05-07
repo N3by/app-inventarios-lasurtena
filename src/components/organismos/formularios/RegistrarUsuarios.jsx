@@ -129,7 +129,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                         : "form__field"
                     }
                     defaultValue={dataSelect.correo}
-                    type="text"
+                    type="email"
                     placeholder=""
                     {...register("correo", {
                       required: true,
@@ -154,12 +154,16 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                     {...register("pass", {
                       required: true,
                       minLength: 6,
+                      maxLength:16,
                     })}
                   />
-                  <label className="form__label">pass</label>
+                  <label className="form__label">Contraseña</label>
                   {errors.pass?.type === "required" && <p>Campo requerido</p>}
                   {errors.pass?.type === "minLength" && (
                     <p>Debe tener al menos 6 caracteres</p>
+                  )}
+                  {errors.pass?.type === "maxLength" &&(
+                    <p>Ten cuidado con la longitud maxima de caracteres</p>
                   )}
                 </InputText>
               </article>
@@ -174,10 +178,12 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("nombres", {
                     required: true,
+                    maxLength: 20,
                   })}
                 />
                 <label className="form__label">Nombres</label>
                 {errors.nombres?.type === "required" && <p>Campo requerido</p>}
+                {errors.nombres?.type === "maxLength" && <p>Tu nombre no puede tener mas de 15 caracteres</p>}
               </InputText>
             </article>
 
@@ -209,11 +215,13 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("nrodoc", {
                     required: true,
+                    maxLength: 15,
                   })}
                 />
                 <label className="form__label">Nro. doc</label>
 
                 {errors.nrodoc?.type === "required" && <p>Campo requerido</p>}
+                {errors.nrodoc?.type === "maxLength" && <p>Ingresa un numero de documento valido</p>}
               </InputText>
             </article>
 
@@ -223,15 +231,19 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                   step="0.01"
                   className="form__field"
                   defaultValue={dataSelect.telefono}
-                  type="text"
+                  type="number"
                   placeholder=""
                   {...register("telefono", {
                     required: true,
+                    minLength: 10,
+                    maxLength: 15,
                   })}
                 />
                 <label className="form__label">Telefono</label>
 
                 {errors.telefono?.type === "required" && <p>Campo requerido</p>}
+                {errors.telefono?.type === "minLength" && <p>Tu numero es demasiado corto</p>}
+                {errors.telefono?.type === "maxLength" && <p>Tu numero es demasiado extenso</p>}
               </InputText>
             </article>
 

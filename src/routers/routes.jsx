@@ -14,6 +14,7 @@ import {
   Productos,
   Usuarios,
   Kardex,
+  Perfil,
 } from "../index";
 import { useQuery } from "@tanstack/react-query";
 import { Reportes } from "../pages/Reportes";
@@ -69,6 +70,7 @@ export function MyRoutes() {
         <Route path="/configurar/usuarios" element={<Usuarios />} />
         <Route path="/kardex" element={<Kardex />} />
         <Route path="/reportes" element={<Reportes />} />
+        <Route path="/configurar/perfil" element={<Perfil />} />
       </Route>
     </Routes>
   );

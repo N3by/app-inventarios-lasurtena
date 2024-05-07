@@ -4,40 +4,37 @@ import {
   Btnfiltro,
   ContentFiltro,
   Header,
-  RegistrarMarca,
   TablaMarca,
   Title,
   v,
   Buscador,
   useMarcaStore,
-  ReporteKardex,
-  useKardexStore,
+  useUsuariosStore,
+  RegistrarUsuarios,
+  TablaUsuarios,
 } from "../../index";
 import { useState } from "react";
-import { PDFViewer } from "@react-pdf/renderer";
 
-export function ReportesTemplate({  }) {
+export function PerfilTemplate({ data }) {
   const [state, setState] = useState(false);
   const [dataSelect, setdataSelect] = useState([]);
   const [accion, setAccion] = useState("");
   const [openRegistro, SetopenRegistro] = useState(false);
-  const {datakardex} = useKardexStore();
-
   const nuevoRegistro = () => {
     SetopenRegistro(!openRegistro);
     setAccion("Nuevo");
     setdataSelect([]);
-  };
-  const { setBuscador } = useMarcaStore();
+  }
+  const {setBuscador} = useUsuariosStore();
   return (
     <Container>
-      {openRegistro && (
-        <RegistrarMarca
+      {openRegistro && 
+        <RegistrarUsuarios
           dataSelect={dataSelect}
           accion={accion}
           onClose={() => SetopenRegistro(!openRegistro)}
         />
-      )}
+      }
 
       <header className="header">
         <Header
@@ -47,24 +44,23 @@ export function ReportesTemplate({  }) {
 
       <section className="area1">
         <ContentFiltro>
-          <Title>Reportes</Title>
-          {/* <Btnfiltro
-            funcion={nuevoRegistro}
-            bgcolor="#f6f3f3"
-            textcolor="#353535"
-            icono={<v.agregar />}
-          /> */}
+          <Title>Mi perfil</Title>
         </ContentFiltro>
       </section>
 
-      {/* <section className="area2">
-        <Buscador setBuscador={setBuscador} />
-      </section> */}
+      <section className="area2">
+        <Buscador set
+        ={setBuscador}/>
 
+      </section>
+      
       <section className="main">
-        <PDFViewer style={{width:"100%", height: "100%"}}>
-          <ReporteKardex data={datakardex}/>
-        </PDFViewer>
+        <TablaUsuarios
+          data={data}
+          SetopenRegistro={SetopenRegistro}
+          setdataSelect={setdataSelect}
+          setAccion={setAccion}
+        />
       </section>
     </Container>
   );
@@ -99,6 +95,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: end;
+
   }
   .main {
     grid-area: main;

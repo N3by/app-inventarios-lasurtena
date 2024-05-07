@@ -78,8 +78,11 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
   }
   useEffect(() => {
     if (accion === "Editar") {
-      selectMarca({id:dataSelect.idmarca, descripcion:dataSelect.marca})
-      selectcategorias({id:dataSelect.id_categoria, descripcion:dataSelect.categoria})
+      selectMarca({ id: dataSelect.idmarca, descripcion: dataSelect.marca });
+      selectcategorias({
+        id: dataSelect.id_categoria,
+        descripcion: dataSelect.categoria,
+      });
     }
   }, []);
   return (
@@ -110,10 +113,16 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("descripcion", {
                     required: true,
+                    maxLength: 30,
                   })}
                 />
-                <label className="form__label">descripcion</label>
-                {errors.nombre?.type === "required" && <p>Campo requerido</p>}
+                <label className="form__label">Nombre de producto</label>
+                {errors.descripcion?.type === "required" && (
+                  <p>Campo requerido</p>
+                )}
+                {errors.descripcion?.type === "maxLength" && (
+                  <p>Ingresa un nombre con menos de 30 caracteres</p>
+                )}
               </InputText>
             </article>
             <ContainerSelector>
@@ -152,10 +161,18 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   defaultValue={dataSelect.stock}
                   {...register("stock", {
                     required: true,
+                    min: 1,
+                    max: 10000,
                   })}
                 />
                 <label className="form__label">Stock</label>
                 {errors.stock?.type === "required" && <p>Campo requerido</p>}
+                {errors.stock?.type === "min" && (
+                  <p>Debes ingresar un valor positivo</p>
+                )}
+                {errors.stock?.type === "max" && (
+                  <p>Debes ingresar un valor inferior a 10000</p>
+                )}
               </InputText>
             </article>
 
@@ -169,12 +186,20 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("stockminimo", {
                     required: true,
+                    min: 1,
+                    max: 10000,
                   })}
                 />
                 <label className="form__label">Stock minimo</label>
 
                 {errors.stockminimo?.type === "required" && (
                   <p>Campo requerido</p>
+                )}
+                {errors.stockminimo?.type === "min" && (
+                  <p>Debes ingresar un valor positivo</p>
+                )}
+                {errors.stockminimo?.type === "max" && (
+                  <p>Debes ingresar un valor inferior a 10000</p>
                 )}
               </InputText>
             </article>
@@ -216,11 +241,19 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("codigobarras", {
                     required: true,
+                    min: 0,
+                    max: 10000000000,
                   })}
                 />
                 <label className="form__label">Codigo de barras</label>
                 {errors.codigobarras?.type === "required" && (
                   <p>Campo requerido</p>
+                )}
+                {errors.codigobarras?.type === "min" && (
+                  <p>Debes ingresar un valor positivo</p>
+                )}
+                {errors.codigobarras?.type === "max" && (
+                  <p>Debes ingresar un valor inferior a 1000000000</p>
                 )}
               </InputText>
             </article>
@@ -234,17 +267,25 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("codigointerno", {
                     required: true,
+                    min: 0,
+                    max: 100000000000,
                   })}
                 />
                 <label className="form__label">Codigo interno</label>
                 {errors.codigointerno?.type === "required" && (
                   <p>Campo requerido</p>
                 )}
+                {errors.codigointerno?.type === "min" && (
+                  <p>Debes ingresar un valor positivo</p>
+                )}
+                {errors.codigointerno?.type === "max" && (
+                  <p>Debes ingresar un valor inferior a 1000000000</p>
+                )}
               </InputText>
             </article>
 
             <article>
-              <InputText icono={<v.iconoprecioventa/>}>
+              <InputText icono={<v.iconoprecioventa />}>
                 <input
                   step="0.01"
                   className="form__field"
@@ -253,12 +294,20 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("precioventa", {
                     required: true,
+                    min: 1,
+                    max: 100000000000,
                   })}
                 />
                 <label className="form__label">Precio de venta</label>
 
                 {errors.precioventa?.type === "required" && (
                   <p>Campo requerido</p>
+                )}
+                {errors.precioventa?.type === "min" && (
+                  <p>Debes ingresar un valor positivo</p>
+                )}
+                {errors.precioventa?.type === "max" && (
+                  <p>Debes ingresar un valor inferior a 100000000000</p>
                 )}
               </InputText>
             </article>
@@ -273,6 +322,8 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   placeholder=""
                   {...register("preciocompra", {
                     required: true,
+                    min: 1,
+                    max: 100000000000,
                   })}
                 />
                 <label className="form__label">Precio de compra</label>
@@ -280,9 +331,14 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                 {errors.preciocompra?.type === "required" && (
                   <p>Campo requerido</p>
                 )}
+                {errors.preciocompra?.type === "min" && (
+                  <p>Debes ingresar un valor positivo</p>
+                )}
+                {errors.preciocompra?.type === "max" && (
+                  <p>Debes ingresar un valor inferior a 100000000000</p>
+                )}
               </InputText>
             </article>
-
           </section>
 
           <div className="btnguardarContent">

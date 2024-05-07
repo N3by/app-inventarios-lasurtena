@@ -12,7 +12,7 @@ export function BannerEmpresa() {
           {dataempresa?.nombre}
         </span>
         <div className="content-text">
-          Inventarios la Surteñan te mantiene informado!
+          Inventarios la Surteña te mantiene informado!
         </div>
         <ContentCards>
           <CardDatosEmpresa titulo="Moneda" valor={dataempresa?.simbolomoneda} />

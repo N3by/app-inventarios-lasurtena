@@ -17,7 +17,7 @@ export function HomeTemplate() {
 
       <section className="area1">
 
-        <Title>Tu empresa</Title>
+        <Title>La surteña</Title>
       </section>
 
 
