@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   cell: {
     flex: 1,
     textAlign: "left",
-    fontFamily: "Inconsolata",
+    borderLeftWidth: 2, // Ancho del borde izquierdo en píxeles
     borderLeftColor: "#000",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#dcdcdc",
     fontWeight: "bold",
-    fontFamily: "Inconsolata",
     textAlign: "left",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -51,10 +50,18 @@ const styles = StyleSheet.create({
 });
 const renderTableRow = (rowData, isHeader = false) => (
   <View style={styles.row} key={rowData.id}>
-    <Text >{rowData.fecha}</Text>
-    <Text> {rowData.descripcion}</Text>
-    <Text> {rowData.detalle}</Text>
-    <Text> {rowData.cantidad}</Text>
+    <Text style={[styles.cell, isHeader && styles.headerCell]}>
+      {rowData.fecha}
+    </Text>
+    <Text style={[styles.cell, isHeader && styles.headerCell]}>
+      {rowData.descripcion}
+    </Text>
+    <Text style={[styles.cell, isHeader && styles.headerCell]}>
+      {rowData.detalle}
+    </Text>
+    <Text style={[styles.cell, isHeader && styles.headerCell]}>
+      {rowData.cantidad}
+    </Text>
   </View>
 );
 
@@ -65,9 +72,6 @@ const renderPage = (pageNumber, pageCount) => (
 );
 
 export function ReporteKardex({ data }) {
-  
-
-
   const currentDate = new Date();
   const formattedDate = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
   return (
@@ -75,9 +79,8 @@ export function ReporteKardex({ data }) {
       <Page size="A4" style={styles.page} orientation="landscape">
         <View style={styles.section}>
           <View>
-            
             <Text>Movimientos de Kardex</Text>
-            <Text>Fecha y Hora de impresion: {formattedDate}</Text>
+            <Text style={{ marginBottom: 10 }}>Fecha y Hora de impresion: {formattedDate}</Text>
             <View style={styles.table}>
               {renderTableRow(
                 {
