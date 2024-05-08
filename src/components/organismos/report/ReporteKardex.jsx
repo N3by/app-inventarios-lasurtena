@@ -57,21 +57,24 @@ const renderTableRow = (rowData, isHeader = false) => (
       {rowData.descripcion}
     </Text>
     <Text style={[styles.cell, isHeader && styles.headerCell]}>
-      {rowData.detalle}
+      {rowData.tipo}
     </Text>
     <Text style={[styles.cell, isHeader && styles.headerCell]}>
       {rowData.cantidad}
     </Text>
   </View>
+
+
 );
 
 const renderPage = (pageNumber, pageCount) => (
   <Text style={{ position: "absolute", top: 16, right: 16 }}>
     Página {pageNumber} de {pageCount}
   </Text>
+
 );
 
-export function ReporteKardex({ data }) {
+export function ReporteKardex({ data}) {
   const currentDate = new Date();
   const formattedDate = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
   return (
@@ -86,14 +89,19 @@ export function ReporteKardex({ data }) {
                 {
                   fecha: "Fecha",
                   descripcion: "Producto",
-                  detalle: "Movimiento",
+                  tipo: "Movimiento",
                   cantidad: "Cantidad",
                 },
                 true
               )}
+              
+ 
               {data?.map((movement) => renderTableRow(movement))}
             </View>
+            
           </View>
+          {/* <Text style={styles.row}>Total Compras </Text>
+          <Text style={styles.row}>Total Ventas </Text> */}
         </View>
         {renderPage}
       </Page>

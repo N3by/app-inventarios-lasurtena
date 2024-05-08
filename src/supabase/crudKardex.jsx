@@ -18,6 +18,11 @@ export async function MostrarKardex(p) {
     .order("id", { ascending: false });
   return data;
 }
+// export async function SumarTipoKardex(p) {
+//   const { data } = await supabase
+//     .rpc("sumarCantidadEntrada", p)
+//   return data;
+// }
 
 export async function EliminarKardex(p) {
   const { error } = await supabase.from("kardex").delete().eq("id", p.id);

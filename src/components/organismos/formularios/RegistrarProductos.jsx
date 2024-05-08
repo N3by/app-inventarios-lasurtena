@@ -49,7 +49,7 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
         descripcion: ConvertirCapitalize(data.descripcion),
         idmarca: marcaItemSelect.id,
         stock: parseFloat(data.stock),
-        stock_minimo: parseFloat(data.codigointerno),
+        stock_minimo: parseFloat(data.stock_minimo),
         codigobarras: parseFloat(data.codigobarras),
         codigointerno: data.codigointerno,
         precioventa: parseFloat(data.precioventa),
@@ -64,7 +64,7 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
         _descripcion: ConvertirCapitalize(data.descripcion),
         _idmarca: marcaItemSelect.id,
         _stock: parseFloat(data.stock),
-        _stock_minimo: parseFloat(data.codigointerno),
+        _stock_minimo: parseFloat(data.stock_minimo),
         _codigobarras: parseFloat(data.codigobarras),
         _codigointerno: data.codigointerno,
         _precioventa: parseFloat(data.precioventa),
@@ -184,7 +184,7 @@ export function RegistrarProductos({ onClose, dataSelect, accion }) {
                   defaultValue={dataSelect.stock_minimo}
                   type="number"
                   placeholder=""
-                  {...register("stockminimo", {
+                  {...register("stock_minimo", {
                     required: true,
                     min: 1,
                     max: 10000,

@@ -26,6 +26,12 @@ export function Kardex() {
     enabled: dataempresa?.id != null,
   });
 
+  // const { data: sumartipokardex } = useQuery({
+  //   queryKey: ["sumar entradas", { _id_empresa: dataempresa?.id }],
+  //   queryFn: () => sumartipokardex({ _id_empresa: dataempresa?.id }),
+  //   enabled: dataempresa?.id != null,
+  // });
+
   const { data: buscarkardexLista } = useQuery({
     queryKey: [
       "buscar kardex",
