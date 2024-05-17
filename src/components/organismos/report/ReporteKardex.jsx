@@ -100,8 +100,6 @@ export function ReporteKardex({ data}) {
             </View>
             
           </View>
-          {/* <Text style={styles.row}>Total Compras </Text>
-          <Text style={styles.row}>Total Ventas </Text> */}
         </View>
         {renderPage}
       </Page>
